@@ -11,6 +11,14 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/login', function(req, res, next) {
+  res.render('login' );
+});
+
+router.get('/feed', function(req, res, next) {
+  res.render('feed' );
+});
+
 router.get('/profile', isLoggedIn,function(req, res, next) {
   res.send("profile");
 });
