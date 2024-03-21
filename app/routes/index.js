@@ -20,7 +20,7 @@ router.get('/feed', function(req, res, next) {
 });
 
 router.get('/profile', isLoggedIn,function(req, res, next) {
-  res.send("profile");
+  res.render('profile');
 });
 
 router.post('/ragister',(req,res)=>{
