@@ -8,7 +8,7 @@ const localstrategy = require('passport-local')
 passport.use(new localstrategy(userModel.authenticate()))
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index');
 });
 
 router.get('/login', function(req, res, next) {
@@ -37,12 +37,7 @@ userModel.register(userData, req.body.password)
 
 router.post('/login',passport.authenticate('local',{
   successRedirect:'/profile',
-  failureRedirect:'/'
-}),(req,res)=>{})
-
-router.post('/login',passport.authenticate('local',{
-  successRedirect:'/profile',
-  failureRedirect:'/'
+  failureRedirect:'/login'
 }),(req,res)=>{})
 
 router.get('/logout',(req,res)=>{
@@ -54,6 +49,6 @@ router.get('/logout',(req,res)=>{
 
 function isLoggedIn(req,res,next){
   if(req.isAuthenticated()) return next();
-  res.redirect ('/')
+  res.redirect ('/login')
 }
 module.exports = router;
