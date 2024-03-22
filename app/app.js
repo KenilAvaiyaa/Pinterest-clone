@@ -8,11 +8,12 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const passport = require('passport');
 var app = express();
-
+const flash = require('connect-flash')
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(flash())
 app.use(exsession({
   resave:false,
   saveUninitialized:false,

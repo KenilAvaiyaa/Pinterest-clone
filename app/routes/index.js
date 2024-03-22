@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('login' );
+  res.render('login',{error: req.flash("error")});
 });
 
 router.get('/feed', function(req, res, next) {
@@ -37,7 +37,8 @@ userModel.register(userData, req.body.password)
 
 router.post('/login',passport.authenticate('local',{
   successRedirect:'/profile',
-  failureRedirect:'/login'
+  failureRedirect:'/login',
+  failureFlash:true
 }),(req,res)=>{})
 
 router.get('/logout',(req,res)=>{
